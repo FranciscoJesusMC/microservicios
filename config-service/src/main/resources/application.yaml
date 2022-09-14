@@ -1,12 +1,12 @@
 server:
-  port: 8081
+  port: 8079
 spring:
   cloud:
     config:
       server:
         git:
-          default-label: config-server
+          default-label: eureka
           uri: https://github.com/FranciscoJesusMC/microservicios
-          search-paths:  config-data
+          search-paths: config-data
   application:
     name: config-service          
