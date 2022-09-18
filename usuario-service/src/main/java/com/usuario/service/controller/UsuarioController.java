@@ -51,7 +51,7 @@ public class UsuarioController {
 		return ResponseEntity.ok(usuarioNuevo);
 	}
 	
-	@CircuitBreaker(name = "carrosCB",fallbackMethod = "fallBackGetCarros")
+	@CircuitBreaker(name = "carroCB",fallbackMethod = "fallBackGetCarros")
 	@GetMapping("/carros/{usuarioId}")
 	public ResponseEntity<List<Carro>> listarCarros(@PathVariable(name = "usuarioId")int usuarioId){
 		Usuario usuario = usuarioService.getUsuarioById(usuarioId);
@@ -63,7 +63,7 @@ public class UsuarioController {
 		return ResponseEntity.ok(listarCarros);
 	
 	}
-	@CircuitBreaker(name = "motosCB",fallbackMethod = "fallBackGetMotos")
+	@CircuitBreaker(name = "motoCB",fallbackMethod = "fallBackGetMotos")
 	@GetMapping("/motos/{usuarioId}")
 	public ResponseEntity<List<Moto>> listarMotos(@PathVariable(name = "usuarioId")int usuarioId){
 		Usuario usuario = usuarioService.getUsuarioById(usuarioId);
@@ -75,7 +75,7 @@ public class UsuarioController {
 		
 	}
 	
-	@CircuitBreaker(name = "carrosCB",fallbackMethod = "fallBackSaveCarros")
+	@CircuitBreaker(name = "carroCB",fallbackMethod = "fallBackSaveCarros")
 	@PostMapping("/carro/{usuarioId}")
 	public ResponseEntity<Carro> guardarCarro(@PathVariable(name = "usuarioId")int usuarioId,@RequestBody Carro carro){
 		Carro nuevoCarro = usuarioService.saveCarro(usuarioId, carro);
@@ -83,7 +83,7 @@ public class UsuarioController {
 		
 	}
 	
-	@CircuitBreaker(name = "motosCB",fallbackMethod = "fallBackSaveMotos")
+	@CircuitBreaker(name = "motoCB",fallbackMethod = "fallBackSaveMotos")
 	@PostMapping("/moto/{usuarioId}")
 	public ResponseEntity<Moto> guardarMoto(@PathVariable(name = "usuarioId")int usuarioId,@RequestBody Moto moto){
 		Moto nuevaMoto = usuarioService.saveMoto(usuarioId, moto);
